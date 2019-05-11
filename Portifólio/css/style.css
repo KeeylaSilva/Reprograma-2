@@ -1,0 +1,53 @@
+.flex{
+display:flex;
+}
+
+body {
+    background-color: rgb(243, 236, 236);
+    text-align: center;
+    margin: 20px 0 0 0;
+    font-size: 1.00em;
+    font-weight: normal;
+}
+
+.logo {
+    background-image: linear-gradient(120deg, #eecf6a 20%, #f0a647 90%);
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Allerta Stencil', sans-serif;
+}
+
+a {
+    color: black;
+}
+
+
+.grow { 
+    padding: 90px; 
+    color: white; 
+}
+.grow:hover { 
+    padding: 60px; 
+    transição: 1s; 
+
+    .flex {
+        display: flex;
+    }
+}
+h6 {
+	text-align: left;
+	margin: 20px 10px 10px 10px;
+	font-size: 1.25em;
+    font-weight: arial;
+}   
+
+.card {
+    margin: 1rem;
+    background: white;
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all .2s linear;
+    background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+  
+  }
+
