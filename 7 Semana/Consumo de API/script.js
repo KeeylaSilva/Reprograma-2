@@ -1,4 +1,4 @@
-const classe = document.getElementsByClassName('maravilhosas__perfil')
+// const classe = document.getElementsByClassName('maravilhosas__perfil')
 
 fetch('https://theblackwomanhistory.firebaseio.com/.json')
 
@@ -7,41 +7,41 @@ fetch('https://theblackwomanhistory.firebaseio.com/.json')
 
     })
     .then((data) => {
-        console.log(data)
+        
 
         data.content.forEach(data => {
 
             const woman = document.querySelector('.maravilhosas__box')
-
             // const box = document.createElement('div');
             // box.setAttribute('class', 'box')
             // woman.appendChild(box)
 
+            const card = document.createElement('div')
+            card.setAttribute('class', 'maravilhosas__perfil')
+            woman.appendChild(card)
+
             const link = document.createElement('maravilhosas__perfil')
-            link.setAttribute('class', 'a')
-            woman.appendChild(link)
+            link.setAttribute('href', '#')
+            card.appendChild(link)
 
-
-
-            const title = document.createElement('h3')
-            title.innerHTML = data.title
-            link.appendChild(title)
-
-            const descricao = document.createElement('p')
-            descricao.innerHTML = data.description
-            link.appendChild(descricao)
-
-            const a = document.createElement('a')
-            a.setAttribute('src', 'Foto da personalidade')
-            link.appendChild(a)
+            // const descricao = document.createElement('p')
+            // descricao.innerHTML = data.description
+            // link.appendChild(descricao)
 
             const img = document.createElement('img')
-            if (data.metadata && data.metadata.image.url) {
+            img.setAttribute('class', 'img-responsive')
+            if (data.metadata && data.metadata.image) {
                 img.setAttribute('src', data.metadata.image.url);
             } else {
-                // img.setAttribute('src', '.Consumo de API\img\img-mulher.png')
+                img.setAttribute('src', './img/img-mulher.png')
             }
             link.appendChild(img)
+
+            const title = document.createElement('p')
+            title.textContent = data.title;
+
+            link.appendChild(title)
+            console.log(data)
 
             // CRIAR IF PARA IMAGENS
         })
