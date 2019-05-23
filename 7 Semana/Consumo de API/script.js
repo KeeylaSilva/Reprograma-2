@@ -1,53 +1,71 @@
 // const classe = document.getElementsByClassName('maravilhosas__perfil')
 
-fetch('https://theblackwomanhistory.firebaseio.com/.json')
+const button = document.getElementById("send_form");
+
+button.addEventListener("click", (evento) => {
+    evento.preventDefault();
+
+    const entrada = document.getElementByName("nome").value;
+    const url = document.getElementById("img").value;
+
+fetch('http://localhost:5001/maravilhosas', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+
+        'title': entrada,
+        'metadata.image': url
+    })
 
     .then((response) => {
         return response.json()
 
     })
-    .then((data) => {
-        
+        .then((data) => {
 
-        data.content.forEach(data => {
 
-            const woman = document.querySelector('.maravilhosas__box')
-            // const box = document.createElement('div');
-            // box.setAttribute('class', 'box')
-            // woman.appendChild(box)
+            data.content.forEach(data => {
 
-            const card = document.createElement('div')
-            card.setAttribute('class', 'maravilhosas__perfil')
-            woman.appendChild(card)
+                const woman = document.querySelector('.maravilhosas__box')
+                // const box = document.createElement('div');
+                // box.setAttribute('class', 'box')
+                // woman.appendChild(box)
 
-            const link = document.createElement('maravilhosas__perfil')
-            link.setAttribute('href', '#')
-            card.appendChild(link)
+                const card = document.createElement('div')
+                card.setAttribute('class', 'maravilhosas__perfil')
+                woman.appendChild(card)
 
-            // const descricao = document.createElement('p')
-            // descricao.innerHTML = data.description
-            // link.appendChild(descricao)
+                const link = document.createElement('maravilhosas__perfil')
+                link.setAttribute('href', '#')
+                card.appendChild(link)
 
-            const img = document.createElement('img')
-            img.setAttribute('class', 'img-responsive')
-            if (data.metadata && data.metadata.image) {
-                img.setAttribute('src', data.metadata.image.url);
-            } else {
-                img.setAttribute('src', './img/img-mulher.png')
-            }
-            link.appendChild(img)
+                // const descricao = document.createElement('p')
+                // descricao.innerHTML = data.description
+                // link.appendChild(descricao)
 
-            const title = document.createElement('p')
-            title.textContent = data.title;
+                const img = document.createElement('img')
+                img.setAttribute('class', 'img-responsive')
+                if (data.metadata && data.metadata.image) {
+                    img.setAttribute('src', data.metadata.image.url);
+                } else {
+                    img.setAttribute('src', './img/img-mulher.png')
+                }
+                link.appendChild(img)
 
-            link.appendChild(title)
-            console.log(data)
+                const title = document.createElement('p')
+                title.textContent = data.title;
 
-            // CRIAR IF PARA IMAGENS
+                link.appendChild(title)
+                console.log(data)
+
+                // CRIAR IF PARA IMAGENS
+            })
+
         })
 
-    })
-
-    .catch((erro) => {
-        console.log(erro)
-    })
+        .catch((erro) => {
+            console.log(erro)
+        })

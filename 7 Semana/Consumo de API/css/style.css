@@ -554,3 +554,6 @@ li {
         max-width: 650px;
     }
 }
+form{
+    justify-content: center;
+}
