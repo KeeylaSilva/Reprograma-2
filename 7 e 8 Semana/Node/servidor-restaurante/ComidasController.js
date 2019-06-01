@@ -6,10 +6,20 @@ const comidas = {
 ]}
 
 const get = (params) => {
-    return comidas
+    return pratos
 }
 
 const add = (comida) => {
+    comida.id = Math.random().toString(36).substr(-8)
     comidas.pratos.push(comida)
 }
-module.exports = {get,add}
+
+server.remove = (id) => {
+    let comidasRestantes = getAll().pratos
+    comidasRestantes.filter((comidas) => {
+        return comidas.id !== id
+    })
+    
+}
+
+module.exports = {get,add,remove}
